@@ -130,10 +130,10 @@ def webui():
 
     while 1:
         demo = modules.ui.create_ui(wrap_gradio_gpu_call=wrap_gradio_gpu_call)
-
-        app, local_url, share_url = demo.launch(
-            share=cmd_opts.share,
-            server_name="0.0.0.0" if cmd_opts.listen else None,
+        
+        app,local_url,share_url = demo.launch(
+            share=False,
+            server_name="0.0.0.0",# if cmd_opts.listen else None,
             server_port=cmd_opts.port,
             debug=cmd_opts.gradio_debug,
             auth=[tuple(cred.split(':')) for cred in cmd_opts.gradio_auth.strip('"').split(',')] if cmd_opts.gradio_auth else None,
